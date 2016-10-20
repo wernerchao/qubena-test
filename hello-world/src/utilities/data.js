@@ -6,6 +6,9 @@ class TempData extends Component {
         this.state = {
             tempData: '',
         }
+        this.wrongs = [];
+        this.corrects = '';
+        this.questions = '';
     }
     componentDidMount() {
         var request = new XMLHttpRequest();
@@ -14,10 +17,9 @@ class TempData extends Component {
                 var json = request.responseText;
                 var data = JSON.parse(json);
                 this.setState({ tempData: json });
-                console.log("wrongs length is: " + data["wrongs"].length);
-                console.log("correct_ratios length is: " + data["correct_ratios"].length);
-                console.log("corrects length is: " + data["corrects"].length);
-                console.log("totals length is: " + data["totals"].length);
+                this.wrongs = data["wrongs"];
+                console.log("wrongs length is: " + data["wrongs"]);
+                console.log("wrongs length is: " + this.wrongs);
             }
         }.bind(this);
         request.open("POST", this.props.source, true);
