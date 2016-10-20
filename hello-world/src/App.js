@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Bar } from 'react-chartjs-2';
-// var BarChart = require("react-chartjs").Bar;
+import TempData from './utilities/data.js';
 
 class App extends Component {
   constructor(props) {
@@ -40,6 +40,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <Bar data={this.state.chartData} />
+        <TempData source="http://develop.qubena.com/v4/api/playlogs/question_collect_rate/" />
       </div>
     );
   }
