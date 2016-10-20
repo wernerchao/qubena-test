@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Bar } from 'react-chartjs-2';
-// import TempData from './utilities/data.js'; NEVER USED
+import { HorizontalBar } from 'react-chartjs-2';
+import {
+    FormGroup, ControlLabel, FormControl, HelpBlock
+} from 'react-bootstrap';
+// import InputId from './components/input';
+// import TempData from './utilities/data'; NEVER USED
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
+      subsectionId: 1,
       chartData: {
         labels: ["January", "February", "March", "April", "May", "June", "July"],
         datasets: [
@@ -46,32 +51,37 @@ class App extends Component {
     }.bind(this);
     request.open("POST", "http://develop.qubena.com/v4/api/playlogs/question_collect_rate/", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.send("subsection_id=1");
+    console.log("request: " + this.state.subsectionId);
+    request.send("subsection_id=" + this.state.subsectionId);
     }
   tempData(labels, corrects, wrongs) {
     var tempDataObject = {
-          labels: labels,
-          datasets: [
-              {
-                  label: "Correct Questions",
-                  backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                  borderColor: 'rgba(54, 162, 235, 1)',
-                  borderWidth: 1,
-                  data: corrects,
-              },
-              {
-                  label: "Wrong Questions",
-                  backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                  borderColor: 'rgba(255, 99, 132, 1)',
-                  borderWidth: 1,
-                  data: wrongs,
-              }
-          ]
+      labels: labels,
+      datasets: [
+          {
+              label: "Correct Questions",
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1,
+              data: corrects,
+          },
+          {
+              label: "Wrong Questions",
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1,
+              data: wrongs,
+          }
+      ]
     }
     return tempDataObject;
   }
   componentWillUnmount() {
       this.serverRequest.abort();
+  }
+  handleChange = (e) => {
+    this.setState({ subsectionId: e.target.value });
+    console.log('handleChange '+ this.state.subsectionId);
   }
   render() {
     return (
@@ -83,7 +93,21 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Bar data={this.state.chartData} />
+        <form>
+            <FormGroup>
+                <ControlLabel>Type in an integer: </ControlLabel>
+                <FormControl 
+                  type="text" 
+                  name="subsection" 
+                  value={this.state.subsectionId}
+                  onChange={this.handleChange} 
+                  placeholder="1~163" 
+                  />
+                <FormControl.Feedback />
+                <HelpBlock></HelpBlock>
+            </FormGroup>
+        </form>
+        <HorizontalBar width="100%" height="150" data={this.state.chartData} />
       </div>
     );
   }
