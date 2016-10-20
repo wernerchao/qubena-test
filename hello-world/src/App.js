@@ -35,6 +35,9 @@ class App extends Component {
     }
   }
   componentDidMount() {
+    this.fetchData(this.state.subsectionId);
+  }
+  fetchData(idNumber) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState === 4 && request.status === 200) {
@@ -51,9 +54,9 @@ class App extends Component {
     }.bind(this);
     request.open("POST", "http://develop.qubena.com/v4/api/playlogs/question_collect_rate/", true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    console.log("request: " + this.state.subsectionId);
-    request.send("subsection_id=" + this.state.subsectionId);
-    }
+    console.log("request: " + idNumber);
+    request.send("subsection_id=" + idNumber);
+  }
   tempData(labels, corrects, wrongs) {
     var tempDataObject = {
       labels: labels,
@@ -81,6 +84,7 @@ class App extends Component {
   }
   handleChange = (e) => {
     this.setState({ subsectionId: e.target.value });
+    this.fetchData(e.target.value);
     console.log('handleChange '+ this.state.subsectionId);
   }
   render() {
