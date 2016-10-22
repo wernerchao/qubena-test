@@ -49,7 +49,6 @@ class App extends Component {
         }.bind(this);
         request.open("POST", "http://develop.qubena.com/v4/api/playlogs/question_collect_rate/", true);
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        console.log("request: " + idNumber);
         request.send("subsection_id=" + idNumber);
     }
     tempData = (labels, corrects, wrongs, label1, label2) => { //process the data here
@@ -90,7 +89,7 @@ class App extends Component {
             <div className="App">
                 <div className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
-                    <h2>Welcome to React</h2>
+                    <h2>Welcome to React - Werner's Test for COMPASS Inc.</h2>
                 </div>
                 <br />
                 <Grid>
@@ -98,13 +97,13 @@ class App extends Component {
                         <Col xs={4} xsOffset={4}>
                             <form onSubmit={this.handleSubmit}>
                                 <FormGroup>
-                                    <ControlLabel>Type in an integer: </ControlLabel>
+                                    <ControlLabel>Type in an integer between 1~164: </ControlLabel>
                                     <FormControl
                                         type="text"
                                         name="subsection"
                                         value={this.state.subsectionId}
                                         onChange={this.handleChange}
-                                        placeholder="1~163"
+                                        placeholder="1~164"
                                         />
                                     <FormControl.Feedback />
                                     <HelpBlock></HelpBlock>
@@ -148,13 +147,14 @@ class App extends Component {
                                 data={this.state.ratioChartData}
                                 options={{
                                     maintainAspectRatio: true,
+                                    showLines: false,
                                     legend: false,
                                     title: {
                                         display: true,
                                         text: 'Chart 3: Ratio(%) of Correct Questions'
                                     }
                                 }}
-                                type='bar'
+                                type='line'
                                 />
                         </Col>
                     </Row>
