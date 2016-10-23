@@ -1,4 +1,6 @@
-This project is created for COMPASS Inc. test [demo](https://qubena-test.firebaseapp.com/).
+This project is created for COMPASS Inc. test.
+
+Here is a [demo](https://qubena-test.firebaseapp.com/).
 
 **Note: For this demo to work, you need to use chrome to view the demo.
 Also, you need to disable the shield icon in the url because my demo's domain
@@ -17,6 +19,7 @@ Also, the scope and reasoning behind the choices made to complete this task.
 - [Scope of Project](#scope-of-project)
   - [Chart Choices](#chart-choices)
   - [Responsive Design](#responsive-design)
+  - [Known Bugs](#known-bugs)
   - [Improvement](#improvement)
 
 ## Installation
@@ -25,6 +28,10 @@ To start inspecting the project, type in the following command:
 
 ```
 $ git clone https://github.com/wernerchao/qubena-test.git
+```
+Then, 
+```
+$ npm start
 ```
 
 * Everything needs to be inspected is stored in the `src` folder
@@ -101,16 +108,26 @@ access this website using desktop/laptop to get
 the full experience. Mobile site is for visualizing 
 the general trend only.
 
+### Known Bugs
+
+The project is not compatible with devices that has screen size smaller than 360px wide (i.e. iphone 5)
 
 ### Improvement
 
-**Note: The project's scope is defined small on purpose**
+**Note: The project's scope is defined small on purpose. So many aspects could be improved**
 
 The project could be improved in several ways:
+* Break the parts down into more components, and leave `App.js` cleaner. I didn't do this because a lot of the parts used in `App.js`
+are already components, and for this small project, we are not expecting to scale and re-use a lot of stuff. That's why I kept it 
+simple, and didn't separate into smaller components.
+
 * Break the hundred of data points down to smaller pieces, and use multiple 
 charts when the data is more than a certain number.
 
-e.g. use 10 data points per chart, so if the data points is 23, 
+  e.g. use 10 data points per chart, so if the data points is 23, 
 then serve 3 charts of, 10 + 10 + 3, for each chart, rather than serving 1 chart of 23 data points.
+
 * Allow mobile users to click on the chart and visualize a fully expanded 
 and fully functional chart on a new page.
+
+* Re-adjust the chart height for mobile devices. Make the site compatible with devices smaller than 360px wide (i.e. iphone 5).

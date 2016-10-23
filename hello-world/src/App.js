@@ -10,7 +10,7 @@ import {
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state = { //initial data for 3 graphs
             subsectionId: 1,
             chartData: {
                 labels: [],
