@@ -143,14 +143,22 @@ class App extends Component {
                                     maintainAspectRatio: true,
                                     title: {
                                         display: true,
-                                        fontSize: 16,
-                                        text: 'Temperature Data vs Months Every 30 Years Since 1894'
+                                        fontSize: 20,
+                                        text: 'Global Surface Temperature vs Months for Every 30 Years Since 1894'
                                     },
                                     legend: {
                                         position: 'bottom',
                                     },
                                     scales: {
+                                        xAxes: [{
+                                            gridLines: {
+                                                display: false,
+                                            },
+                                        }],
                                         yAxes: [{
+                                        gridLines: {
+                                            display: false,
+                                        },
                                         scaleLabel: {
                                             display: true,
                                             labelString: 'Temperature'
