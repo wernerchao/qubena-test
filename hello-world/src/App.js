@@ -11,14 +11,22 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = { //initial data for 3 graphs
-            subsectionId: 1,
+            subsectionId: "",
             chartData: {
-                labels: [],
-                datasets: []
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                    {
+                        data: [29, 19, 17, 27, 13, 28, 22, 6, 16, 15, 18, 20] 
+                    }
+                ]
             },
             lineChartData: {
-                labels: [],
-                datasets: []
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                    {
+                        data: [29, 19, 17, 27, 13, 28, 22, 6, 16, 15, 18, 20] 
+                    }
+                ]
             },
             ratioChartData: {
                 labels: [],
