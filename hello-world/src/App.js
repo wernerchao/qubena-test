@@ -12,6 +12,7 @@ class App extends Component {
         super(props);
         this.state = { //initial data for 3 graphs
             subsectionId: "",
+            // Taken out to use Quebena code for data visualization exercise
             // chartData: {
             //     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             //     datasets: [
@@ -28,7 +29,7 @@ class App extends Component {
                         backgroundColor: 'rgba(255, 99, 132, 1)',
                         borderColor: 'rgba(255, 99, 132, 1)',
                         label: 'Year 1894',
-                        data: [-54, -31, -21, -40, -29, -43, -31, -26, -22, -16, -24, -21] 
+                        data: [-54, -31, -21, -40, -29, -43, -31, -26, -22, -16, -24, -21]
                     },
                     {
                         fill: false,
@@ -60,6 +61,7 @@ class App extends Component {
                     },
                 ]
             },
+            // Taken out to use Quebena code for data visualization exercise
             // ratioChartData: {
             //     labels: [],
             //     datasets: []
@@ -77,13 +79,13 @@ class App extends Component {
                 var data = JSON.parse(json);
                 var labels = data["questions"];
                 var corrects = data["corrects"];
-                // var wrongs = data["wrongs"];
-                // var ratio = data["correct_ratios"];
+                // var wrongs = data["wrongs"]; // Taken out to use Quebena code for data visualization exercise
+                // var ratio = data["correct_ratios"]; // Taken out to use Quebena code for data visualization exercise
                 var total = data["totals"];
                 this.setState({
-                    // chartData: this.tempData(labels, corrects, wrongs, "Correct Questions", "Wrong Questions"),
+                    // chartData: this.tempData(labels, corrects, wrongs, "Correct Questions", "Wrong Questions"), // Taken out to use Quebena code for data visualization exercise
                     lineChartData: this.tempData(labels, corrects, total, "Correct Questions", "Total Questions"),
-                    // ratioChartData: this.tempData(labels, ratio, '')
+                    // ratioChartData: this.tempData(labels, ratio, '') // Taken out to use Quebena code for data visualization exercise
                 });
             }
         }.bind(this);
@@ -129,7 +131,7 @@ class App extends Component {
             <div className="App">
                 <div className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
-                    <h2>Welcome to React - Werner's Test for COMPASS Inc.</h2>
+                    <h2>Welcome to Werner's Data Visualization of GISTEMP</h2>
                 </div>
                 <br />
                 <Grid>
@@ -141,12 +143,31 @@ class App extends Component {
                                     maintainAspectRatio: true,
                                     title: {
                                         display: true,
-                                        text: 'Temperature Data vs Months'
-                                    }
+                                        fontSize: 16,
+                                        text: 'Temperature Data vs Months Every 30 Years Since 1894'
+                                    },
+                                    legend: {
+                                        position: 'bottom',
+                                    },
+                                    scales: {
+                                        yAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Temperature'
+                                        }
+                                        }]
+                                    },
+                                    multiTooltipTemplate: "<%= value + ' %' %>"
                                 }}
                                 type='line'
                                 />
                         </Col>
+                    </Row>
+                        <div></div>
+                        <br />
+                        <div></div>
+                        <br />
+                    <Row>
                     </Row>
                 </Grid>
             </div>
@@ -156,6 +177,7 @@ class App extends Component {
 
 export default App;
 
+                    // Taken out to use Quebena code for data visualization exercise
                     // <Row>
                     //     <Col xs={4} xsOffset={4}>
                     //         <form onSubmit={this.handleSubmit}>
