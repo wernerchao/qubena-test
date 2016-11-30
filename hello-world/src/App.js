@@ -24,8 +24,40 @@ class App extends Component {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [
                     {
-                        data: [29, 19, 17, 27, 13, 28, 22, 6, 16, 15, 18, 20] 
-                    }
+                        fill: false,
+                        backgroundColor: 'rgba(255, 99, 132, 1)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        label: 'Year 1894',
+                        data: [-54, -31, -21, -40, -29, -43, -31, -26, -22, -16, -24, -21] 
+                    },
+                    {
+                        fill: false,
+                        backgroundColor: 'rgba(30,144,255, 1)',
+                        borderColor: 'rgba(30,144,255, 1)',
+                        label: 'Year 1924',
+                        data: [-21, -25, -11, -33, -17, -26, -25, -32, -29, -34, -21, -40] 
+                    },
+                    {
+                        fill: false,
+                        backgroundColor: 'rgba(255,127,80, 1)',
+                        borderColor: 'rgba(255,127,80, 1)',
+                        label: 'Year 1954',
+                        data: [-27, -10, -12, -18, -20, -15, -16, -12, -7, 0, 9, -16] 
+                    },
+                    {
+                        fill: false,
+                        backgroundColor: 'rgba(95,158,160, 1)',
+                        borderColor: 'rgba(95,158,160, 1)',
+                        label: 'Year 1984',
+                        data: [31, 18, 29, 10, 34, 6, 15, 15, 19, 15, 4, -6] 
+                    },
+                    {
+                        fill: false,
+                        backgroundColor: 'rgba(50,50,50, 1)',
+                        borderColor: 'rgba(50,50,50, 1)',
+                        label: 'Year 2014',
+                        data: [74, 50, 77, 78, 86, 66, 58, 82, 90, 86, 68, 79] 
+                    },
                 ]
             },
             // ratioChartData: {
@@ -109,7 +141,7 @@ class App extends Component {
                                     maintainAspectRatio: true,
                                     title: {
                                         display: true,
-                                        text: 'Chart 2: Correct Questions out of Total Questions'
+                                        text: 'Temperature Data vs Months'
                                     }
                                 }}
                                 type='line'
